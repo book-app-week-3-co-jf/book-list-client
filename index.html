@@ -10,10 +10,19 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+    <script id="book-list-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
   </head>
   <body>
       <header class="site-header clearfix">
@@ -21,15 +30,38 @@
             <h1>
               books app
             </h1>
-          </section>
         </header>
         <h1>
           my books
         </h1>
     <main>
+      <section id="books" class="available-books">
+        <div>
+          <ul id="title-author">
+            <li>The Name of the Wind by Patrick Rothfuss</li>
+            <li>Dune by Frank Herbert</li>
+            <li>The Left Hand of Darkness by Ursula K. Le Guid</li>
+            <li>Foundation by Isaac Asimov</li>
+            <li>Stranger in a Strange Land by Robert A Heinlein</li>
+          </ul>
+        </div>
+      </section>
     </main>
     <footer>
       &copy; 2017 Code Fellows
     </footer>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script src="books.js"></script>
+    <script src="views/book-view.js"></script> 
+    <script src="views/error-view.js"></script> 
+    <script>
+    Books.fetchAll();
+    </script>
   </body>
 </html>
