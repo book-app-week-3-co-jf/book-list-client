@@ -1,0 +1,19 @@
+
+img {
+  max-width: 100%;
+}
+
+* {
+  background-color: darkgrey;
+}
+
+body {
+  line-height: 1.5;
+  font-size: 100%;
+  color: white;
+}
+
+main {
+  margin: 0 20px;
+}
+
