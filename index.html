@@ -19,20 +19,23 @@
          <p class="detail">Description: {{description}}</p>
       </li>
     </script>
+    <script id="error-template" type="text/x-handlebars-template">
+      <p>{{status}}</p>
+    </script>
   </head>
   <body>
       <header class="site-header clearfix">
-          <section class="heading-group-h1">
-            <h1>
-              books app
-            </h1>
-        </header>
-        <h1>
-          my books
-        </h1>
-    <main>
-      <section id="books" class="available-books">
-        <div>
+      <h1>
+        book app
+      </h1>
+    </header>
+          <section class="error-view container"></section>
+            <main>
+              <section id="books" class="available-books container" >
+                <h1>
+                  my books
+                </h1>
+                <div>
           <ul id="title-author">
           </ul>
         </div>
