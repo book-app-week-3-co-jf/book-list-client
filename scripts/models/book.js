@@ -30,33 +30,33 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
   Books.loadAll = rows => Books.all = rows.sort((a, b) => a.title - b.title).map(book => new Books(book));
 //this will get invoked from the form
 //we need to build the form so that everything can communicate with eachother
-  Books.fetchOne = book_id => { //book_id is arbitrary, it can be called anything. But once it's named, the parameter has to be the same when you call it later
-    $.getJSON(`http://localhost:3000/api/v1/books/${book_id}`) //find out how to grab one id from one book 
-    .then(data => {
-      console.log(data);
-      Books.loadAll(data);
-      callback();
-    })
-    .catch(err => app.errorView.errorCallback(err));
-  }
-  
-  Books.fetchAll = callback => {
-      $.getJSON('http://localhost:3000/api/v1/books')
-      .then(data => { 
-        console.log(data);
-        Books.loadAll(data);
-        callback();
-      })
-      .catch(err => app.errorView.errorCallback(err));
-    }
 
-  // Books.insertRecord = function(callback) {
-  //     $.post('/api/v1/books', {title: this.tile, author: this.author})
-  //       .then(data => {
-  //         console.log(data);
-  //         if (callback) callback();
-  //       })
-  //   };
+Books.fetchAll = callback => {
+  $.getJSON('http://localhost:3000/api/v1/books')
+  .then(data => { 
+    console.log(data);
+    Books.loadAll(data);
+    callback();
+  })
+  .catch(err => app.errorView.errorCallback(err));
+}
+
+Books.fetchOne = book_id => { //book_id is arbitrary, it can be called anything. But once it's named, the parameter has to be the same when you call it later
+  $.getJSON(`http://localhost:3000/api/v1/books/${book_id}`) 
+  .then(data => {
+    console.log(data);
+    Books.loadAll(data);
+    callback();
+  })
+  .catch(err => app.errorView.errorCallback(err));
+}
+
+Book.prototype.create = function(callback) {
+    $.post('/api/v1/books', {title: this.title, author: this.author, isbn: this.isbn, image_url: this.image_url, description: this.description}).then(data => {
+      console.log(data);
+      if (callback) callback();
+    })
+  }
 
     module.Books = Books;
 }(app));
