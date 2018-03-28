@@ -4,12 +4,21 @@ var errorView = {};
 
 (function (module) {
 
-errorView.initErrorPage = (err) => {
+function initErrorPage(err) {
   $('.container').hide();
   $('.error-view').show();
   $('.error-view').empty();
-var template = Handlebars.compile($('#error-template'))
-$('.error-view').append(template(err));
+  var template = Handlebars.compile($('#error-template').text());
+  $('.error-view').append(template(err));
 }
-  module.errorView = errorView;
+
+errorView.errorCallback = (err) => {
+  console.log(err);
+    initErrorPage(err);
+  }
+
+module.errorView = errorView;
 })(app);
+
+
+

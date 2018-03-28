@@ -32,10 +32,11 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
   Books.fetchAll = callback => {
       $.getJSON('http://localhost:3000/api/v1/books')
       .then(data => { 
+        console.log(data);
         Books.loadAll(data);
         callback();
       })
-      .catch(err => console.log(err));
+      .catch(err => app.errorView.errorCallback(err));
     }
     module.Books = Books;
 }(app));
