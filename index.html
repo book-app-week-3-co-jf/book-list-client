@@ -19,6 +19,14 @@
          <p class="detail">Description: {{description}}</p>
       </li>
     </script>
+    <!-- // create new script for handlebars for single book -->
+    <script id="detail-view-template" type="text/x-handlebars-template">
+      <li class="clearfix">
+         <h2>Title: {{title}}</h2>
+         <img src="{{image_url}}">
+         <p>Author: {{author}}</p>
+      </li>
+    </script>
     <script id="error-template" type="text/x-handlebars-template">
       <p>{{status}}</p>
     </script>
@@ -40,6 +48,8 @@
           </ul>
         </div>
       </section>
+      <!-- create new section for single view -->
+      <section class="detail-view container"></section>  
     </main>
     <footer>
       &copy; 2017 Code Fellows
@@ -50,6 +60,7 @@
     <script src="scripts/models/book.js"></script>
     <script src="scripts/views/book-view.js"></script>
     <script src="scripts/views/error-view.js"></script>
+    <script src="scripts/views/routes.js"></script>
     <script>
       app.Books.fetchAll(app.bookView.initIndexPage);
     </script>
