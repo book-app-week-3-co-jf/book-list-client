@@ -21,11 +21,7 @@
     </script>
     <!-- // create new script for handlebars for single book -->
     <script id="detail-view-template" type="text/x-handlebars-template">
-      <li class="clearfix">
-         <h2>Title: {{title}}</h2>
-         <img src="{{image_url}}">
-         <p>Author: {{author}}</p>
-      </li>
+     <button class="detail-view" type="click">view details</button>
     </script>
     <script id="error-template" type="text/x-handlebars-template">
       <p>{{status}}</p>
@@ -49,7 +45,7 @@
         </div>
       </section>
       <!-- create new section for single view -->
-      <section class="detail-view container"></section>  
+      <section class="detail-view container"></section>
     </main>
     <footer>
       &copy; 2017 Code Fellows
