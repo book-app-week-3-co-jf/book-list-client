@@ -8,50 +8,73 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/modules.css">
+    <link rel="stylesheet" href="styles/modules/book-main.css">
+    <link rel="stylesheet" href="styles/modules/detail-main.css">
+    <link rel="stylesheet" href="styles/modules/form-main.css">
     <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
     <script id="book-list-template" type="text/x-handlebars-template">
       <li class="clearfix">
          <h2>Title: {{title}}</h2>
          <img src="{{image_url}}">
          <p>Author: {{author}}</p>
-         <p class="detail">ISBN: {{isbn}}</p>
-         <p class="detail">Description: {{description}}</p>
       </li>
+      <a class="detail-view" href="/books/{{book_id}}">view details</a>
+      <a href="/books/new">add a new book</a>
     </script>
-    <!-- // create new script for handlebars for single book -->
     <script id="detail-view-template" type="text/x-handlebars-template">
-     <button class="detail-view" type="click">view details</button>
-     <button data-id="{{book_id}}" class="detail-update" id="update" type="click">Update</button>
-     <button data-id="{{book_id}}" class="detail-delete" id="delete" type="click">Delete</button>
+      <li class="clearfix">
+        <h2>Title: {{title}}</h2>
+        <img src="{{image_url}}">
+        <p>Author: {{author}}</p>
+        <p class="detail">ISBN: {{isbn}}</p>
+        <p class="detail">Description: {{description}}</p>
+     </li>
+     <a href="/books">home</a>
+    </script>
+    <script id="form-template" type="text/x-handlebars-template">
     </script>
     <script id="error-template" type="text/x-handlebars-template">
       <p>{{status}}</p>
     </script>
   </head>
   <body>
-      <header class="site-header clearfix">
-      <h1>
-        book app
-      </h1>
+    <header class="site-header clearfix">
+      <h1>book app</h1>
+      <h1>my books</h1>
     </header>
-          <section class="error-view container"></section>
-            <main>
-              <section id="books" class="available-books container" >
-                <h1>
-                  my books
-                </h1>
-                <div>
-          <ul id="title-author">
-          </ul>
-        </div>
+    <section class="error-view container"></section>
+    <main>
+      <section id="books" class="available-books container" >
+      <div>
+        <ul id="title-author"></ul>
+      </div>
       </section>
-      <!-- create new section for single view -->
       <section class="detail-view container"></section>
+      <section id="write" class="tab-content container">
+          <h1>add a new book</h1>
+          <form action="#" id="new-form">
+            <label>
+              <input type="text" id="article-title" placeholder="title" required>
+            </label>
+            <textarea id="article-body" rows="8" cols="40" required></textarea>
+            <label>
+              <input type="text" id="article-author" placeholder="author" required>
+            </label>
+            <label>
+              <input type="text" id="article-author-url" placeholder="isbn" required>
+            </label>
+            <label>
+              <input type="text" id="article-category" placeholder="image url" required>
+            </label>
+            <label>
+                <input type="text" id="article-category" placeholder="description..." required>
+              </label>
+            <button type="submit">submit</button>
+          </form>
+          <a href="/books">home</a>
+          </section>
     </main>
-    <footer>
-      &copy; 2017 Code Fellows
-    </footer>
+    <footer>&copy; 2017 Code Fellows</footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>

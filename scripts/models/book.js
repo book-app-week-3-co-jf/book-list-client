@@ -11,6 +11,7 @@ ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
 (function (module) {
 
   function Books (rawDataObj) {
+    this.book_id = rawDataObj.book_id;
     this.title = rawDataObj.title;
     this.author = rawDataObj.author;
     this.isbn = rawDataObj.isbn;
@@ -41,12 +42,12 @@ Books.fetchAll = callback => {
   .catch(err => app.errorView.errorCallback(err));
 }
 
-Books.fetchOne = (ctx, callback) => { //book_id is arbitrary, it can be called anything. But once it's named, the parameter has to be the same when you call it later
+Books.fetchOne = (ctx, callback) => {
   $.getJSON(`http://localhost:3000/api/v1/books/${ctx.params.book_id}`) 
-  .then(data => {
-    console.log(data);
-    Books.loadAll(data);
-    callback();
+  .then(book => {
+    book = new Books(book[0]);
+    console.log(book);
+    callback(book);
   })
   .catch(err => app.errorView.errorCallback(err));
 }
