@@ -22,6 +22,8 @@
     <!-- // create new script for handlebars for single book -->
     <script id="detail-view-template" type="text/x-handlebars-template">
      <button class="detail-view" type="click">view details</button>
+     <button data-id="{{book_id}}" class="detail-update" id="update" type="click">Update</button>
+     <button data-id="{{book_id}}" class="detail-delete" id="delete" type="click">Delete</button>
     </script>
     <script id="error-template" type="text/x-handlebars-template">
       <p>{{status}}</p>
