@@ -14,6 +14,7 @@ bookView.initIndexPage = () => {
 bookView.initDetailView = (book) => {
   $('.container').hide();
   $('.detail-view').show();
+  $('.detail').show();
   var template = Handlebars.compile($('#detail-view-template').text());
   $('.detail-view').append(template(book)); 
 }
